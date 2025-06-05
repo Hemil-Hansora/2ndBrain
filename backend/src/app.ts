@@ -1,6 +1,8 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import { errorMiddleware } from "./middlewares";
+
 
 const app = express();
 
@@ -11,4 +13,19 @@ app.use(
     })
 );
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+
+import authRoutes from './routes/auth.route'
+
+
+app.use("/api/v1/auth", authRoutes);
+
+
+
+
+
+app.use(errorMiddleware)
 export {app}

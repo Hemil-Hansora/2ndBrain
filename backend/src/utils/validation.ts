@@ -9,14 +9,14 @@ export const signupSchema = z.object({
 
     password: z
         .string()
-        .min(6, { message: "username must be at least 6 characters long " })
-        .max(15, { message: "username must be at most 15 characters long" })
+        .min(6, { message: "password must be at least 6 characters long " })
+        .max(15, { message: "password must be at most 15 characters long" })
         .regex(/[!@#$%^&*(),.?":{}|<>]/, {
             message: "Password must contain at least 1 special character",
         })
         .refine((val) => [...val].some((char) => char >= "A" && char <= "Z"), {
             message: "Must include at least one capital letter",
-        }),
+        }), 
 });
 
 export const signinSchema = z.object({
