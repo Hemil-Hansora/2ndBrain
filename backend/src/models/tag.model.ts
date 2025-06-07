@@ -6,6 +6,6 @@ const tagModel = new Schema({
         required: true,
         unique: true,
     },
-});
+},{timestamps:true});
 
 export const Tag = model("Tag",tagModel)

@@ -19,9 +19,12 @@ app.use(cookieParser());
 
 
 import authRoutes from './routes/auth.route'
+import contentRoutes from './routes/content.route'
+
 
 
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/content",contentRoutes)
 
 
 

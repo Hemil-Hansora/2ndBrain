@@ -1,34 +1,40 @@
 import mongoose, { Schema, model } from "mongoose";
 
-const contentModel = new Schema({
-    title: {
-        type: String,
-    },
-    link: {
-        type: String,
-    },
-    content: {
-        type: String,
-    },
-    imageUrl: {
-        type: String,
-    },
-    type :{
-        type : String,
-        enum : ['link','note'],
-        required : true
-    },
-    tag: [
-        {
-            type: mongoose.Types.ObjectId,
-            ref: "Tag",
+const contentModel = new Schema(
+    {
+        title: {
+            type: String,
+            required: true,
+            trim: true,
         },
-    ],
-    userId: {
-        type: mongoose.Types.ObjectId,
-        ref: "User",
-        required: true,
+        link: {
+            type: String,
+            default: "",
+            trim: true,
+        },
+        content: {
+            type: String,
+            default: "",
+            trim: true,
+        },
+        type: {
+            type: String,
+            enum: ["link", "youtube", "tweet", "note"],
+            required: true,
+        },
+        tags: [
+            {
+                type: mongoose.Types.ObjectId,
+                ref: "Tag",
+            },
+        ],
+        userId: {
+            type: mongoose.Types.ObjectId,
+            ref: "User",
+            required: true,
+        },
     },
-});
+    { timestamps: true }
+);
 
 export const Content = model("Content", contentModel);
