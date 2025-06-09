@@ -1,5 +1,4 @@
-import { User } from "./user.model";
-import { Content } from "./content.model";
-import { Tag } from "./tag.model";
-
-export { User ,Content,Tag};
+export { User } from "./user.model";
+export { Content } from "./content.model";
+export { Tag } from "./tag.model";
+export {Link} from "./link.model"

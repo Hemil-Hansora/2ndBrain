@@ -6,13 +6,14 @@ import {
     asyncHandler,
     ApiError,
     ApiResponse,
+    AuthRequest,
 } from "../utils";
 
-const signup = asyncHandler(async (req : Request, res:Response) => {
-    console.log(req.body)
+const signup = asyncHandler(async (req: Request, res: Response) => {
+    console.log(req.body);
     const validInput = signupSchema.safeParse(req.body);
 
-    console.log(validInput?.error?.errors)
+    console.log(validInput?.error?.errors);
     if (!validInput.success) {
         const errorMessage = validInput.error.errors
             .map((e) => e.message)
@@ -38,7 +39,7 @@ const signup = asyncHandler(async (req : Request, res:Response) => {
     );
 });
 
-const signin = asyncHandler(async (req : Request, res:Response) => {
+const signin = asyncHandler(async (req: Request, res: Response) => {
     const validInput = signinSchema.safeParse(req.body);
 
     if (!validInput.success) {
@@ -80,5 +81,16 @@ const signin = asyncHandler(async (req : Request, res:Response) => {
         );
 });
 
+const signout = asyncHandler(async (req: AuthRequest, res) => {
+    const option = {
+        httpOnly: true,
+        secure: true,
+    };
 
-export {signin,signup}
+    return res
+        .status(200)
+        .clearCookie("accessToken", option)
+        .json(new ApiResponse(200, {}, "User sign out successfully"));
+});
+
+export { signin, signup , signout };
