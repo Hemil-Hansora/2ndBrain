@@ -32,7 +32,7 @@ const toggleShare = asyncHandler(async (req: AuthRequest, res) => {
             .json(
                 new ApiResponse(
                     200,
-                    existingLink.hash,
+                    {hash : existingLink.hash},
                     "Share link already active."
                 )
             );
@@ -48,7 +48,7 @@ const toggleShare = asyncHandler(async (req: AuthRequest, res) => {
         .json(
             new ApiResponse(
                 200,
-                newLink.hash,
+                {hash : newLink.hash},
                 "Share link generated successfully."
             )
         );
