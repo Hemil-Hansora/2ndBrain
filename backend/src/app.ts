@@ -12,9 +12,6 @@ app.use(
     })
 );
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
 
 import authRoutes from "./routes/auth.route";
 import contentRoutes from "./routes/content.route";

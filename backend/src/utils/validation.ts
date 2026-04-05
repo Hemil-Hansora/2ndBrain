@@ -42,3 +42,8 @@ export const searchSchema = z.object({
 export const shareSchema = z.object({
     share: z.boolean(),
 });
+
+export const testingSchema = z.object({
+    id:z.string(),
+    name:z.string(),
+})
