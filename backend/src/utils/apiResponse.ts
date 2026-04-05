@@ -6,7 +6,7 @@ class ApiResponse {
         public data: any,
         public message: string
     ) {
-        this.success = statusCode >= 200 && statusCode < 400;
+        this.success = statusCode >= 400 && statusCode < 500;
     }
 }
 
